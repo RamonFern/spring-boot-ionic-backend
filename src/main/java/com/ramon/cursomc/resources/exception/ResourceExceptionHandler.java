@@ -18,4 +18,3 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 }
-//corrigir pq não enviou os dados do erro
