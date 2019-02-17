@@ -70,17 +70,58 @@ public class CursomcApplication implements CommandLineRunner {
 		Produto p1 = new Produto(null, "Computador", 2000.00);
 		Produto p2 = new Produto(null, "Impressora", 800.00);
 		Produto p3 = new Produto(null, "Mouse", 80.00);
+		Produto p4 = new Produto(null, "Mesa de Escritorio", 300.00);
+		Produto p5 = new Produto(null, "Toalha", 50.00);
+		Produto p6 = new Produto(null, "Colcha", 200.00);
+		Produto p7 = new Produto(null, "TV true Color", 12000.00);
+		Produto p8 = new Produto(null, "Roçadeira", 800.00);
+		Produto p9 = new Produto(null, "Abajour", 100.00);
+		Produto p10 = new Produto(null, "Pendente", 180.00);
+		Produto p11 = new Produto(null, "Shampoo", 90.00);
 		
 		cat1.getProdutos().add(p1);
 		cat1.getProdutos().add(p2);
 		cat1.getProdutos().add(p3);
 		//cat1.getProdutos().addAll(Arrays.asList(p1,p2,p3));
 		cat2.getProdutos().add(p2);
+		cat2.getProdutos().add(p4);
+		
+		cat3.getProdutos().add(p5);
+		cat3.getProdutos().add(p6);
+		
+		cat4.getProdutos().add(p1);
+		cat4.getProdutos().add(p2);
+		cat4.getProdutos().add(p3);
+		cat4.getProdutos().add(p7);
+		
+		cat5.getProdutos().add(p8);
+		
+		cat6.getProdutos().add(p9);
+		cat6.getProdutos().add(p10);
+		
+		cat7.getProdutos().add(p11);
+		
+		
+		
 		
 		p1.getCategorias().add(cat1);
+		p1.getCategorias().add(cat4);
+		
 		p2.getCategorias().add(cat1);
 		p2.getCategorias().add(cat2);
+		p2.getCategorias().add(cat4);
+		
 		p3.getCategorias().add(cat1);
+		p3.getCategorias().add(cat4);
+		
+		p4.getCategorias().add(cat2);
+		p5.getCategorias().add(cat3);
+		p6.getCategorias().add(cat3);
+		p7.getCategorias().add(cat4);
+		p8.getCategorias().add(cat5);
+		p9.getCategorias().add(cat6);
+		p10.getCategorias().add(cat6);
+		p11.getCategorias().add(cat7);
 		
 		categoriaRepository.save(cat1);
 		categoriaRepository.save(cat2);
@@ -94,6 +135,14 @@ public class CursomcApplication implements CommandLineRunner {
 		produtoRepository.save(p1);
 		produtoRepository.save(p2);
 		produtoRepository.save(p3);
+		produtoRepository.save(p4);
+		produtoRepository.save(p5);
+		produtoRepository.save(p6);
+		produtoRepository.save(p7);
+		produtoRepository.save(p8);
+		produtoRepository.save(p9);
+		produtoRepository.save(p10);
+		produtoRepository.save(p11);
 		
 		Estado est1 = new Estado(null, "Minas Gerais");
 		Estado est2 = new Estado(null, "São Paulo");
