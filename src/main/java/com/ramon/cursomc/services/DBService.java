@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ramon.cursomc.domain.Categoria;
@@ -32,6 +33,8 @@ import com.ramon.cursomc.repositories.ProdutoRepository;
 @Service
 public class DBService {
 	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	@Autowired
@@ -159,7 +162,7 @@ public class DBService {
 		cidadeRepository.save(c3);
 		
 		
-		Cliente cli1 = new Cliente(null, "Maria Silva", "devramontest@gmail.com", "45346333564", TipoCliente.PESSOAFISICA);
+		Cliente cli1 = new Cliente(null, "Maria Silva", "devramontest@gmail.com", "45346333564", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		
 		//cli1.getTelefones().addAll(Arrays.asList("234231144","32523423"));
 		cli1.getTelefones().add("222222222");
