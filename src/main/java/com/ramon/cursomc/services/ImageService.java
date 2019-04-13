@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import org.imgscalr.Scalr;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,8 +50,20 @@ public class ImageService {
 		    return new ByteArrayInputStream(os.toByteArray());
 		} catch (IOException e) {
 			throw new FileException("Erro ao ler arquivo!");
-		}
-		
-		
+		}	
+	}
+	
+	public BufferedImage cropSquare(BufferedImage souceImg) {
+		int min = (souceImg.getHeight() <= souceImg.getWidth()) ? souceImg.getHeight() : souceImg.getWidth();
+		return Scalr.crop(
+				souceImg,
+				(souceImg.getWidth()/2) - (min/2),
+				(souceImg.getHeight()/2) - (min/2),
+				min,
+				min);
+	}
+	
+	public BufferedImage resize(BufferedImage souceImg, int size) {
+		return Scalr.resize(souceImg, Scalr.Method.ULTRA_QUALITY, size);
 	}
 }
