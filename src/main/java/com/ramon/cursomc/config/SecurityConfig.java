@@ -1,5 +1,8 @@
 package com.ramon.cursomc.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,6 +54,8 @@ public class SecurityConfig extends  WebSecurityConfigurerAdapter{
 			
 	};
 
+	private List<String> methods = new ArrayList<>();
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
@@ -76,8 +81,17 @@ public class SecurityConfig extends  WebSecurityConfigurerAdapter{
 	
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration =  new CorsConfiguration().applyPermitDefaultValues();
+		methods.add(0, "POST");
+		methods.add(1, "GET");
+		methods.add(2, "PUT");
+		methods.add(3, "DELETE");
+		methods.add(4, "OPTIONS");
+		configuration.setAllowedMethods(methods);
+		//configuration.setAllowedMethods(Arrays.List("POST", "GET", "PUT", "DELETE", "OPTIONS"));
+			
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
 	
